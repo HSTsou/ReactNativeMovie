@@ -1,14 +1,15 @@
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import React from 'react';
 import MovieInfoPage from '../component/MovieInfoPage';
 import configureStore from '../store/configureStore';
 
-export default class MovieInfoIndex extends React.PureComponent {
-  store = createStore(configureStore);
+const store = configureStore;
+
+export default class MovieInfoContainer extends React.PureComponent {
   render() {
+    console.log('MovieInfoContainer = ', store.getState());
     return (
-      <Provider store={this.store}>
+      <Provider store={store}>
         <MovieInfoPage navigation={this.props.navigation} />
       </Provider>
     );

@@ -6,20 +6,10 @@ export function sendTaskRequest() {
   };
 }
 
-// export function sendMovieInfo(movieInfo) {
-//   return (dispatch) => {
-//     dispatch(sendTaskRequest());
-//     // setTimeout(() => {
-//     //   dispatch(sendMovieInfoSuccess(movieInfo));
-//     // }, 1000);
-//     dispatch(sendMovieInfoSuccess(movieInfo));
-//   };
-// }
-
-export function updateMovieInfo(data) {
-  console.log('updateMovieInfo ', data);
+export function updateMovieInfo(movieInfo) {
+  console.log('updateMovieInfo actions = ', movieInfo);
   return {
     type: types.UPDATE_MOVIE_INFO,
-    movieInfo: data,
+    movieInfo,
   };
 }

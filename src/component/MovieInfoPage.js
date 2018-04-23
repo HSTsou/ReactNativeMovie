@@ -1,25 +1,17 @@
-import { bindActionCreators, createStore } from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import MovieDetail from './MovieDetail';
 import MovieTime from './MovieTime';
 import MovieVideo from './MovieVideo';
 import I18n from '../lib/i18n';
-import * as MovieInfoActionCreators from '../actions/movieAction';
-import movieAppReducers from '../reducers';
-import axios from 'axios';
-import MobileApiService from '../networkutil/MobileApiService';
+// import { updateMovieInfo } from '../actions/movieAction';
+import * as Actions from '../actions/movieAction';
+// import MobileApiService from '../networkutil/MobileApiService';
 
 const ScrollableTabView = require('react-native-scrollable-tab-view');
 
-const mobileApiService = new MobileApiService();
-const store = createStore(movieAppReducers);
-// const listener = store.subscribe(() =>
-//   this.setState(
-//     { movieInfo: store.getState().movieInfo[0] },
-//     console.log('store listener getState = ', store.getState()),
-//   ),
-// );
+// const mobileApiService = new MobileApiService();
 
 export class MovieInfoPage extends Component {
   static navigationOptions = {
@@ -31,14 +23,13 @@ export class MovieInfoPage extends Component {
 
     this.state = {
       data: this.props.navigation.state.params,
-      movieInfo: [],
     };
   }
 
   componentDidMount() {
     const movieId = this.state.data.movieData.key.id;
     this.getMovieInfo(movieId);
-    this.getLastVideo();
+    // this.getLastVideo();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -53,7 +44,7 @@ export class MovieInfoPage extends Component {
     } catch (e) {
       jsonData = json;
     }
-    store.dispatch(MovieInfoActionCreators.updateMovieInfo(jsonData));
+    this.props.updateMovieInfo(jsonData);
   };
 
   getMovieInfo = (id) => {
@@ -69,45 +60,45 @@ export class MovieInfoPage extends Component {
       });
   };
 
-  getLastVideo = () => {
-    const data = {
-      start: 0,
-      end: 5,
-    };
+  // getLastVideo = () => {
+  //   const data = {
+  //     start: 0,
+  //     end: 5,
+  //   };
 
-    const data2 = {
-      start: 6,
-      end: 15,
-    };
+  //   const data2 = {
+  //     start: 6,
+  //     end: 15,
+  //   };
 
-    // const firstRequest = mobileApiService
-    //   .getLastVideo(data)
-    //   .then((response) => {
-    //     console.log('mobileApiService response', response);
-    //   })
-    //   .catch((error) => {
-    //     console.log('MobileApiService', error);
-    //   });
+  //   // const firstRequest = mobileApiService
+  //   //   .getLastVideo(data)
+  //   //   .then((response) => {
+  //   //     console.log('mobileApiService response', response);
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.log('MobileApiService', error);
+  //   //   });
 
-    // const secondRequest = mobileApiService
-    //   .getLastVideo(data2)
-    //   .then((response) => {
-    //     console.log('mobileApiService response', response);
-    //   })
-    //   .catch((error) => {
-    //     console.log('MobileApiService', error);
-    //   });
+  //   // const secondRequest = mobileApiService
+  //   //   .getLastVideo(data2)
+  //   //   .then((response) => {
+  //   //     console.log('mobileApiService response', response);
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.log('MobileApiService', error);
+  //   //   });
 
-    // const firstRequest = mobileApiService.getLastVideo(data);
-    // const secondRequest = mobileApiService.getLastVideo(data2);
+  //   // const firstRequest = mobileApiService.getLastVideo(data);
+  //   // const secondRequest = mobileApiService.getLastVideo(data2);
 
-    // axios.all([secondRequest, firstRequest]).then(
-    //   axios.spread((first, second) => {
-    //     console.log('mobileApiService response first ', first);
-    //     console.log('mobileApiService response second ', second);
-    //   }),
-    // );
-  };
+  //   // axios.all([secondRequest, firstRequest]).then(
+  //   //   axios.spread((first, second) => {
+  //   //     console.log('mobileApiService response first ', first);
+  //   //     console.log('mobileApiService response second ', second);
+  //   //   }),
+  //   // );
+  // };
 
   checkData = (data) => {
     if (data !== undefined && data !== null) {
@@ -117,33 +108,32 @@ export class MovieInfoPage extends Component {
   };
 
   render() {
-    const todosActionCreators = bindActionCreators(MovieInfoActionCreators);
-    // console.log('todosActionCreators = ', todosActionCreators);
     console.log('render() props = ', this.props);
     console.log('render() state = ', this.state);
-    const mvInfo = store.getState();
+    const { movieInfo } = this.props;
+    console.log('render() movieInfo = ', movieInfo);
+    let info;
 
-    // const mvInfo = this.state.movieInfo;
+    if (movieInfo.length > 0) {
+      info = movieInfo[0].movieInfo;
+    }
+
+    console.log('render() info > 0 = ', info);
     return (
       <ScrollableTabView>
         <MovieDetail
           tabLabel={I18n.t('MovieInfo.information')}
-          movieInfo={mvInfo.movieInfo}
+          movieInfo={info}
         />
         <MovieVideo
           tabLabel={I18n.t('MovieInfo.trailer')}
-          movieInfo={mvInfo.movieInfo}
+          movieInfo={info}
         />
-        <MovieTime
-          tabLabel={I18n.t('MovieInfo.time')}
-          movieInfo={mvInfo.movieInfo}
-        />
+        <MovieTime tabLabel={I18n.t('MovieInfo.time')} movieInfo={info} />
       </ScrollableTabView>
     );
   }
 }
-
-// module.export = MovieInfoPage;
 
 const mapStateToProps = (state) => {
   console.log('mapStateToProps .state = ', state);
@@ -154,12 +144,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   console.log('mapDispatchToProps ');
-  return {
-    newMovieInfo: bindActionCreators(MovieInfoActionCreators, dispatch),
-  };
+  // return {
+  //   updateMovieInfo: (info) => dispatch(updateMovieInfo(info)),
+  // };
+
+  return bindActionCreators(Actions, dispatch);
 };
 
-const MovieInfoPageContainer = connect(mapStateToProps, mapDispatchToProps)(
-  MovieInfoPage,
-);
-export default MovieInfoPageContainer;
+const MovieInfo = connect(mapStateToProps, mapDispatchToProps)(MovieInfoPage);
+export default MovieInfo;
