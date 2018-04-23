@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
 
 export default class MovieDetail extends Component {
   formatStoryText = (text) => {
-    console.info(text);
+    // console.info('formatStoryText before', text);
     const formatText = String(text).split(':"');
     const end = String(formatText[1]).lastIndexOf('"}');
     const removeEndUselessText = String(formatText[1]).substring(0, end);

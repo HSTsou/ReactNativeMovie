@@ -134,12 +134,12 @@ export default class MainPage extends Component {
   };
 
   renderItem = ({ item }) => {
-    console.info('_renderItem');
+    // console.info('_renderItem');
     return <MovieListData navigation={this.props.navigation} data={item} />;
   };
 
   render() {
-    console.info('render()');
+    // console.info('render()');
 
     if (this.state.loading) {
       // console.info("isLoading");

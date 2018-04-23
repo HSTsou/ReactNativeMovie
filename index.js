@@ -1,5 +1,5 @@
 import { AppRegistry } from 'react-native';
-// import RootView from './RootView';
-import Work from './src/Work';
+import RootView from './RootView';
+// import Work from './src/Work';
 
-AppRegistry.registerComponent('MovieReactNative', () => Work);
+AppRegistry.registerComponent('MovieReactNative', () => RootView);

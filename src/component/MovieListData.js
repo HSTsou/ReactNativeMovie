@@ -5,11 +5,11 @@ import { Card, CardItem, Left, Body } from 'native-base';
 import PropTypes from 'prop-types';
 
 export default class MovieListData extends React.PureComponent {
-  static get propTypes() {
-    return {
-      data: PropTypes.array.isRequired,
-    };
-  }
+  // static get propTypes() {
+  //   return {
+  //     data: PropTypes.array.isRequired,
+  //   };
+  // }
   onPressItem = (movieData) => {
     this.props.navigation.navigate('Second', { movieData });
   };

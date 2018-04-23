@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusBar, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import MainPage from './MainPage';
-import MovieInfoPageContainer from './src/component/MovieInfoPageContainer';
+import MovieInfoIndex from './src/container/MovieInfoIndex';
 
 const AppNav = StackNavigator(
   {
@@ -10,7 +10,7 @@ const AppNav = StackNavigator(
       screen: MainPage,
     },
     Second: {
-      screen: MovieInfoPageContainer,
+      screen: MovieInfoIndex,
     },
   },
   {

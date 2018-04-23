@@ -1,0 +1,3 @@
+export const MOVIE_INFO_REQUEST = 'MOVIE_INFO_REQUEST';
+export const UPDATE_MOVIE_INFO = 'UPDATE_MOVIE_INFO';
+export const TEST = 'TEST';

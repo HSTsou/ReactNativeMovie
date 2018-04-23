@@ -8,9 +8,10 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-console": 0,
-    "arrow-body-style": ["error", "as-needed"],
+    "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }],
     "react/prefer-stateless-function": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "function-paren-newline": ["error", "consistent"]
   },
   "extends": ["airbnb"]
 }
