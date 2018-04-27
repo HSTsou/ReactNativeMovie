@@ -1,8 +1,9 @@
 import * as types from '../constants/ActionTypes';
 
-export function sendTaskRequest() {
+export function clearMovieInfo() {
+  console.log('clearMovieInfo actions');
   return {
-    type: types.MOVIE_INFO_REQUEST,
+    type: types.CLEAR_MOVIE_INFO,
   };
 }
 
@@ -11,5 +12,12 @@ export function updateMovieInfo(movieInfo) {
   return {
     type: types.UPDATE_MOVIE_INFO,
     movieInfo,
+  };
+}
+
+export function onUpdateMovieInfoFailed() {
+  console.log('onUpdateMovieInfoFailed actions = ');
+  return {
+    type: types.FETCHING_MOVIE_INFO_FAILURE,
   };
 }

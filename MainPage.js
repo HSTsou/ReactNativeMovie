@@ -134,15 +134,11 @@ export default class MainPage extends Component {
   };
 
   renderItem = ({ item }) => {
-    // console.info('_renderItem');
     return <MovieListData navigation={this.props.navigation} data={item} />;
   };
 
   render() {
-    // console.info('render()');
-
     if (this.state.loading) {
-      // console.info("isLoading");
       return (
         <View
           style={{
@@ -159,13 +155,12 @@ export default class MainPage extends Component {
       );
     }
 
-    // console.info("is not loading");
     return (
       <View>
         <FlatList
           data={this.state.data}
           renderItem={this.renderItem}
-          keyExtractor={item => item.atMoviesMvId}
+          keyExtractor={item => item.id}
           initialNumToRender={10}
           ListHeaderComponent={this.renderHeader}
           refreshing={this.state.refreshing}

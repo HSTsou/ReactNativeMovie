@@ -1,8 +1,12 @@
+import { Provider } from 'react-redux';
 import React from 'react';
 import { StatusBar, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import MainPage from './MainPage';
-import MovieInfoContainer from './src/container/MovieInfoContainer';
+import MovieInfoContainer from './src/component/MovieInfoContainer';
+import configureStore from './src/store/configureStore';
+
+const store = configureStore;
 
 const AppNav = StackNavigator(
   {
@@ -19,8 +23,8 @@ const AppNav = StackNavigator(
   },
 );
 
-const RootView = () => {
-  console.log('@RootView init navigator');
+const Navigator = () => {
+  console.log('Navigator init');
   return (
     <View
       style={{
@@ -28,9 +32,11 @@ const RootView = () => {
       }}
     >
       <StatusBar backgroundColor="#0288D1" barStyle="light-content" />
-      <AppNav />
+      <Provider store={store}>
+        <AppNav />
+      </Provider>
     </View>
   );
 };
 
-export default RootView;
+export default Navigator;

@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "eslint --ext .js ./src --fix"
+    "lint": "eslint --ext .js ./src --fix",
+    "react-devtools": "react-devtools"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -36,6 +37,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "jest": "22.4.2",
+    "react-devtools": "^3.2.1",
     "react-test-renderer": "16.3.0-alpha.1"
   },
   "jest": {

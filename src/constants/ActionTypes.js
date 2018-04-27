@@ -1,3 +1,3 @@
-export const MOVIE_INFO_REQUEST = 'MOVIE_INFO_REQUEST';
-export const UPDATE_MOVIE_INFO = 'UPDATE_MOVIE_INFO';
-export const TEST = 'TEST';
+export const UPDATE_MOVIE_INFO = 'updateMovieInfo';
+export const CLEAR_MOVIE_INFO = 'clearMovieInfo';
+export const FETCHING_MOVIE_INFO_FAILURE = 'fetchingMovieInfoFailure';

@@ -1,13 +1,22 @@
 import * as types from '../constants/ActionTypes';
 
-export default function updateMoiveInfo(state = [], action) {
+const initMovieInfoState = {}
+
+export default function updateMoiveInfo(state = {}, action) {
   switch (action.type) {
     case types.UPDATE_MOVIE_INFO:
-      console.log('reducer receive action = ', action);
+      console.log('reducer receive UPDATE_MOVIE_INFO action = ', action);
       return [
-        ...state,
+        // ...state,
         {
           movieInfo: action.movieInfo,
+        },
+      ];
+    case types.CLEAR_MOVIE_INFO:
+      console.log('reducer receive CLEAR_MOVIE_INFO action = ', action);
+      return [
+        {
+          movieInfo: {},
         },
       ];
     default:

@@ -7,12 +7,7 @@ import {
   ScrollView,
   // Alert,
 } from 'react-native';
-import {
-  Container,
-  Card,
-  CardItem,
-  Body,
-} from 'native-base';
+import { Container, Card, CardItem, Body } from 'native-base';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
@@ -63,12 +58,9 @@ export default class MovieDetail extends Component {
     // Alert.alert(n);
     const { movieInfo } = this.props;
 
-    const { mvName } = movieInfo;
-    const { enName } = movieInfo;
-    const { imgLink } = movieInfo;
+    const { mvName, enName, imgLink, playingDate } = movieInfo;
     // const { mvlength } = movieInfo;
     // const { IMDbRating } = movieInfo;
-    const { playingDate } = movieInfo;
 
     const storyOri = JSON.stringify(movieInfo.story);
 
