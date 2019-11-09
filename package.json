@@ -9,7 +9,7 @@
     "react-devtools": "react-devtools"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "native-base": "^2.3.9",
     "path": "^0.12.7",
     "prop-types": "^15.6.1",
