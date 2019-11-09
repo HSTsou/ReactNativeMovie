@@ -1,8 +1,7 @@
 import { createHttpClient } from '../networkutil/HttpClientWrapper';
 
 const POST_CONTENT_TYPE = 'application/x-www-form-urlencoded';
-const BASE_URL = 'https://www.hopenglish.com';
-// const BASE_URL = 'https://www.replish.com';
+const BASE_URL = '';
 const TIMEOUT_MS = 30000;
 
 class BaseHttpClient {

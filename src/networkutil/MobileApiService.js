@@ -1,7 +1,7 @@
 import BaseHttpClient from './BaseHttpClient';
 
-const API_VERSION = '/api/v1_0';
-const API_NAME = '/mobile_user';
+const API_VERSION = '';
+const API_NAME = '';
 const API_PRE_TEXT = API_VERSION + API_NAME;
 const RETRY_CONFIG = { retry: 5, retryDelay: 1000 };
 
