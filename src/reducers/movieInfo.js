@@ -1,6 +1,6 @@
 import * as types from '../constants/ActionTypes';
 
-const initMovieInfoState = {}
+const initMovieInfoState = {};
 
 export default function updateMoiveInfo(state = {}, action) {
   switch (action.type) {

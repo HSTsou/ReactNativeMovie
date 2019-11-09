@@ -28,7 +28,8 @@ export class MovieInfoContainer extends Component {
   componentDidMount() {
     console.log('movieinfo componentDidMount ');
     const movieId = this.state.data.movieData.key.id;
-    this.getMovieInfo(movieId);
+    // this.getMovieInfo(movieId);
+    this.getMovieInfoByRxObservable();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -39,7 +40,6 @@ export class MovieInfoContainer extends Component {
     console.log('movieinfo componentWillUnmount ');
     this.props.clearMovieInfo();
   }
-
 
   onSuccessLoaded = (json) => {
     let jsonData = null;
@@ -65,6 +65,10 @@ export class MovieInfoContainer extends Component {
         this.props.onUpdateMovieInfoFailed();
       });
   };
+
+  getMovieInfoByRxObservable = () => {
+    this.props.getMoiveInfoByRxObservable();
+  }
 
   checkData = (data) => {
     if (data !== undefined && data !== null) {

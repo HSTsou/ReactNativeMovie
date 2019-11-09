@@ -1,5 +1,12 @@
 import * as types from '../constants/ActionTypes';
 
+export function getMoiveInfoByRxObservable() {
+  console.log('getMoiveInfoByRxObservable actions');
+  return {
+    type: types.GET_MOVIE_INFO_RX,
+  };
+}
+
 export function clearMovieInfo() {
   console.log('clearMovieInfo actions');
   return {
